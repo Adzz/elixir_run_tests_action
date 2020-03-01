@@ -1,0 +1,7 @@
+
+name: "Runs tests in an Elixir project"
+description: "Uses the current Elixir docker container. Runs all tests in an elixir project. Crucially, in an umbrella app it will cd into each app and run all tests in each app, even if one of the app's tests fails. This means you will see all of the test failures, rather than having to do lots of rebuilds."
+author: "Adzz"
+runs:
+  using: "docker"
+  image: "Dockerfile"
