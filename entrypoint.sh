@@ -9,6 +9,13 @@
 # This script ensures all tests run, regardless of how many failures there are
 # in different apps.
 
+# Get dem deps first
+mix deps.get
+mix deps.compile --force
+
+# Compile everything, erroring on warnings to save some work.
+mix compile --force --warnings-as-errors
+
 # Check if we are an umbrella app.
 if [ -d "apps" ]; then
   GREAT_SUCCESS=0
