@@ -8,3 +8,23 @@ We:
   - mix deps.compile --force
   - mix compile --force --warnings-as-errors
   - Run all the tests.
+
+## Example usage
+
+Add a `.github/workflows/main.yaml` file to the root of the project you want to include it in then inside that you can configure like so:
+
+### On the open of a pull request
+
+```yaml
+on: [pull_request]
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+    # This is an action from github that checks out the code in the repo.
+    - uses: actions/checkout@v2
+    # Give it any name you like
+    - name: "run dem tests"
+      uses: Adzz/elixir_run_tests_action@v1.0.1
+```
