@@ -28,3 +28,21 @@ jobs:
     - name: "run dem tests"
       uses: Adzz/elixir_run_tests_action@v1.0.1
 ```
+
+### On push
+
+```yaml
+on: [push]
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+    # This is an action from github that checks out the code in the repo.
+    - uses: actions/checkout@v2
+    # Give it any name you like
+    - name: "run dem tests"
+      uses: Adzz/elixir_run_tests_action@v1.0.1
+```
+
+More info available in the [workflow docs](https://help.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow)
