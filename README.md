@@ -9,7 +9,7 @@ We:
   - mix compile --force --warnings-as-errors
   - Run mix test.ci
 
-**NOTE** It will run a mix task called `mix test.ci` so you need to add that alias in your mix.exs. This allows you to add flags to the test command, or setup the database etc.
+**NOTE** It will run a mix task called `mix test.ci` so you need to add that alias in your mix.exs. This allows you to add flags to the test command, or setup the database etc. In an umbrella you can define a different command in each app.
 
 ## Example usage
 
