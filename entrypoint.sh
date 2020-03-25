@@ -11,10 +11,10 @@
 
 # Get dem deps first
 mix deps.get
-mix deps.compile --force
+MIX_ENV=test mix deps.compile --force
 
 # Compile everything, erroring on warnings to save some work.
-mix compile --force --warnings-as-errors
+MIX_ENV=test mix compile --force --warnings-as-errors
 
 # Check if we are an umbrella app.
 if [ -d "apps" ]; then
@@ -25,7 +25,7 @@ if [ -d "apps" ]; then
     echo ""
     echo "=> Running tests for: $app"
     cd apps/$app
-    mix test
+    mix test.ci
     SUCCESS=$?
 
     if [ $SUCCESS != 0 ]
@@ -35,7 +35,7 @@ if [ -d "apps" ]; then
     cd ../../
   done
 else
-  mix test
+  mix test.ci
 fi
 
 exit $GREAT_SUCCESS
