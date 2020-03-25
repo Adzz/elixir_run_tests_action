@@ -9,7 +9,32 @@ We:
   - mix compile --force --warnings-as-errors
   - Run mix test.ci
 
-**NOTE** It will run a mix task called `mix test.ci` so you need to add that alias in your mix.exs. This allows you to add flags to the test command, or setup the database etc. In an umbrella you can define a different command in each app.
+## Adding the mix task
+
+**NOTE** this action runs a mix task called `mix test.ci` so you need to add that alias in your mix.exs. This allows you to add flags to the test command, or setup the database etc.
+
+```elixir
+  defp aliases do
+    [
+      ...
+      "test.ci": ["test --color --max-cases=10"],
+      ...
+    ]
+end
+```
+In an umbrella you should define a command in each app, they can do different things if you wish.
+
+You may also want to set the preferred CLI env for the task alias. When this action runs the mix env is automatically set and so everything is fine, but if you add a `mix test.ci` command and try to run that locally it will by default be in the :dev env, which is not what you want for test running. So you can either do this: `MIX_ENV=test mix test.ci` or set this in the `project` in the `mix.exs`
+
+```elixir
+def project do
+  [
+    ...
+    preferred_cli_env: ["test.ci": :test],
+    ...
+  ]
+end
+```
 
 ## Example usage
 
