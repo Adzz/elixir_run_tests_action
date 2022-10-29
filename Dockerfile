@@ -1,4 +1,4 @@
-FROM elixir:1.10
+FROM elixir:latest
 
 ARG MIX_HOME=/.mix
 ENV MIX_HOME=$MIX_HOME
